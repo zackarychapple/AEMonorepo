@@ -16,6 +16,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@ignite": [
+        "projects/ignite2"
+      ],
+      "@ignite/*": [
+        "projects/ignite2/*"
+      ]
+    }
   }
 }

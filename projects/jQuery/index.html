@@ -4,16 +4,23 @@
     <meta charset="UTF-8">
     <title>jQuery</title>
   <link rel="stylesheet" href="../../dist/ignite2/styles.css">
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-<ignite-button></ignite-button>
-<br>
-<br>
-<br>
-<ignite-table></ignite-table>
+<h1>jQuery!</h1>
+<ignite-card>
+  <h2>Edit job</h2>
+  <div class="field-container">
+    <ignite-field #jobName placeholder="Job name *"></ignite-field>
+    <ignite-field #jobCode placeholder="Job code"></ignite-field>
+  </div>
+  <ignite-button button-label="SAVE"></ignite-button>
+</ignite-card>
 </body>
 <script type="text/javascript" src="../../dist/ignite2/scripts.js"></script>
 <script type="text/javascript" src="../../dist/ignite2/runtime.js"></script>
 <script type="text/javascript" src="../../dist/ignite2/polyfills.js"></script>
 <script type="text/javascript" src="../../dist/ignite2/main.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="./index.js"></script>
 </html>

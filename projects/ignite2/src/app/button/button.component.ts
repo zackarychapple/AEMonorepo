@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'ignite-button',
   template: `
-    <button mat-raised-button color="primary"> OMG </button>
+    <button (click)="onQuack.emit($event)" mat-raised-button color="primary"> {{ buttonLabel }} </button>
   `,
-  styles: []
+  styles: [],
+  encapsulation: ViewEncapsulation.None
 })
 export class IgniteButtonComponent implements OnInit {
-
+  @Input() buttonLabel: string;
+  @Output() onQuack = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit() {

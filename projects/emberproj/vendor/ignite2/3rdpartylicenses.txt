@@ -335,6 +335,15 @@ MIT
 
 @angular/material/button
 
+@angular/material/card
+
+@angular/material/form-field
+
+@angular/forms
+MIT
+
+@angular/material/table
+
 @webcomponents/custom-elements
 BSD-3-Clause
 # License
@@ -380,6 +389,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
-
-@angular/material/table

@@ -4621,7 +4621,7 @@ define('emberproj/tests/lint/templates.template.lint-test', [], function () {
 
   QUnit.test('emberproj/templates/application.hbs', function (assert) {
     assert.expect(1);
-    assert.ok(true, 'emberproj/templates/application.hbs should pass TemplateLint.\n\n');
+    assert.ok(false, 'emberproj/templates/application.hbs should pass TemplateLint.\n\nemberproj/templates/application.hbs\n  5:4  error  HTML comment detected  no-html-comments\n  6:4  error  HTML comment detected  no-html-comments\n');
   });
 });
 define('emberproj/tests/lint/tests.lint-test', [], function () {

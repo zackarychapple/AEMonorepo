@@ -1,0 +1,14 @@
+ignite-field {
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+}
+
+ignite-card {
+  margin: 10rem 10rem;
+  width: 75%;
+}
+
+.field-container {
+  margin: 2rem 0;
+}

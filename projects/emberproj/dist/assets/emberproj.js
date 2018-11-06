@@ -237,7 +237,7 @@
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-  exports.default = Ember.HTMLBars.template({ "id": "og/7us4I", "block": "{\"symbols\":[],\"statements\":[[7,\"ignite-button\"],[9],[10],[0,\"\\n\"],[7,\"br\"],[9],[10],[0,\"\\n\"],[7,\"br\"],[9],[10],[0,\"\\n\"],[7,\"br\"],[9],[10],[0,\"\\n\"],[7,\"ignite-table\"],[9],[10],[0,\"\\n\"],[1,[21,\"outlet\"],false]],\"hasEval\":false}", "meta": { "moduleName": "emberproj/templates/application.hbs" } });
+  exports.default = Ember.HTMLBars.template({ "id": "UuK5exfd", "block": "{\"symbols\":[],\"statements\":[[7,\"h1\"],[9],[0,\"Ember!\"],[10],[0,\"\\n\"],[7,\"ignite-card\"],[9],[0,\"\\n  \"],[7,\"h2\"],[9],[0,\"Edit job\"],[10],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"field-container\"],[9],[0,\"\\n    \"],[2,\"<ignite-field placeholder=\\\"Job name *\\\"></ignite-field>\"],[0,\"\\n    \"],[2,\"<ignite-field placeholder=\\\"Job code\\\"></ignite-field>\"],[0,\"\\n  \"],[10],[0,\"\\n  \"],[7,\"ignite-button\"],[11,\"button-label\",\"SAVE\"],[9],[10],[0,\"\\n\"],[10]],\"hasEval\":false}", "meta": { "moduleName": "emberproj/templates/application.hbs" } });
 });
 ;
 
@@ -262,7 +262,7 @@ catch(err) {
 
 ;
           if (!runningTests) {
-            require("emberproj/app")["default"].create({"name":"emberproj","version":"0.0.0+c7e00715"});
+            require("emberproj/app")["default"].create({"name":"emberproj","version":"0.0.0+9d469194"});
           }
         
 //# sourceMappingURL=emberproj.map

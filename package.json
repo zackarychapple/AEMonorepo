@@ -8,7 +8,6 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "bi": "ng build --project=ignite --watch",
     "bi2": "ng build --project=ignite2  --prod --output-hashing none --watch"
   },
   "private": true,
@@ -27,6 +26,7 @@
     "@angular/router": "~7.0.0-rc.0",
     "@webcomponents/custom-elements": "^1.2.1",
     "core-js": "^2.5.4",
+    "jquery": "^3.3.1",
     "rxjs": "~6.3.3",
     "zone.js": "~0.8.26"
   },

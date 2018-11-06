@@ -1,0 +1,6 @@
+<mat-form-field>
+  <input *ngIf="!multiline" matInput [value]="value || ''" type="text" [name]="name" [id]="id"/>
+  <textarea *ngIf="multiline" matInput [name]="name" [id]="id" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMaxRows="7" cdkAutosizeMinRows="3">
+    {{value}}
+  </textarea>
+</mat-form-field>

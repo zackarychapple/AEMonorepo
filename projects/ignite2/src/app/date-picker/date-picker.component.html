@@ -1,5 +1,5 @@
 <mat-form-field>
-  <input matInput [matDatepicker]="picker"/>
-  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
+  <input matInput [name]="userId" [id]="userId" [matDatepicker]="id" placeholder="Select a date" [value]="startDate"/>
+  <mat-datepicker-toggle matSuffix [for]="id"></mat-datepicker-toggle>
+  <mat-datepicker #id [startAt]="startDate"></mat-datepicker>
 </mat-form-field>

@@ -1,7 +1,14 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { Injector, NgModule } from "@angular/core";
 import { createCustomElement } from "@angular/elements";
-import { MatNativeDateModule, MatDatepickerModule } from "@angular/material";
+import {
+  MatNativeDateModule,
+  MatSelectModule,
+  MatOptionModule,
+  MatDatepickerModule,
+  MatSelect,
+  MatOption
+} from "@angular/material";
 import { NativeDateAdapter, DateAdapter } from "@angular/material/core";
 import { IgniteButtonComponent } from "./button/button.component";
 import { IgniteTableComponent } from "./table/table.component";
@@ -12,11 +19,22 @@ import { IgniteSelectComponent } from "@ignite/src/app/select/select.component";
 import { IgniteOptionComponent } from "@ignite/src/app/select/option.component";
 import { IgniteTextBoxComponent } from "@ignite/src/app/text/text.component";
 import { IgniteDatePickerComponent } from "@ignite/src/app/date-picker/date-picker.component";
+import {
+  MAT_SELECT_SCROLL_STRATEGY,
+  MAT_AUTOCOMPLETE_SCROLL_STRATEGY
+} from "@angular/material";
+import { Overlay, ScrollStrategy } from "@angular/cdk/overlay";
+
+export function scrollFactory(overlay: Overlay): () => ScrollStrategy {
+  return () => overlay.scrollStrategies.noop();
+}
 
 @NgModule({
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    MatSelectModule,
+    MatOptionModule,
     MatNativeDateModule,
     MatDatepickerModule
   ],
@@ -31,9 +49,22 @@ import { IgniteDatePickerComponent } from "@ignite/src/app/date-picker/date-pick
     IgniteTextBoxComponent,
     IgniteSelectComponent,
     IgniteOptionComponent,
-    IgniteDatePickerComponent
+    IgniteDatePickerComponent,
+    MatOption,
+    MatSelect
   ],
-  providers: []
+  providers: [
+    {
+      provide: MAT_SELECT_SCROLL_STRATEGY,
+      useFactory: scrollFactory,
+      deps: [Overlay]
+    },
+    {
+      provide: MAT_AUTOCOMPLETE_SCROLL_STRATEGY,
+      useFactory: scrollFactory,
+      deps: [Overlay]
+    }
+  ]
 })
 export class IgniteModule {
   constructor(private injector: Injector) {}
@@ -63,6 +94,10 @@ export class IgniteModule {
     const dateComp = createCustomElement(IgniteDatePickerComponent, {
       injector: this.injector
     });
+    const matOptionComp = createCustomElement(MatOption, {
+      injector: this.injector
+    });
+
     customElements.define("ignite-button", btnComp as any);
     customElements.define("ignite-table", tblComp as any);
     customElements.define("ignite-card", cardComp as any);
@@ -71,5 +106,6 @@ export class IgniteModule {
     customElements.define("ignite-select", selectComp as any);
     customElements.define("ignite-option", optionComp as any);
     customElements.define("ignite-date-picker", dateComp as any);
+    customElements.define("mat-option", matOptionComp as any);
   }
 }

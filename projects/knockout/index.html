@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery</title>
+  <link rel="stylesheet" href="../../dist/ignite2/styles.css">
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+</head>
+<body>
+<!--<ignite-button data-bind="click: testing"></ignite-button>-->
+<ignite-button data-bind="event{ custom: testing}"></ignite-button>
+<br>
+<br>
+<!--<ignite-button onclick="alert('test')"></ignite-button>-->
+<br>
+<br>
+<br>
+<ignite-table></ignite-table>
+<p>First name: <strong data-bind="text: firstName"></strong></p>
+<p>Last name: <strong data-bind="text: lastName"></strong></p>
+
+</body>
+<script type="text/javascript" src="../../dist/ignite2/scripts.js"></script>
+<script type="text/javascript" src="../../dist/ignite2/runtime.js"></script>
+<script type="text/javascript" src="../../dist/ignite2/polyfills.js"></script>
+<script type="text/javascript" src="../../dist/ignite2/main.js"></script>
+
+<script>
+  function AppViewModel() {
+    this.firstName = "Bert";
+    this.lastName = "Bertington";
+    this.testing = function (handler, $event) {
+      debugger
+      alert('omg')
+    }
+  }
+
+  // Activates knockout.js
+  ko.applyBindings(new AppViewModel());
+</script>
+</html>

@@ -1,18 +1,30 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, HostListener, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'ignite-button',
   template: `
-    <button (click)="onQuack.emit($event)" [disabled]="disabled" mat-raised-button color="primary"> {{ buttonLabel }} </button>
+    <button mat-raised-button color="primary" (click)="myEvent()"> OMG</button>
   `,
-  styles: [],
-  encapsulation: ViewEncapsulation.None
+  styles: []
 })
 export class IgniteButtonComponent implements OnInit {
-  @Input() buttonLabel: string;
-  @Input() disabled: boolean;
-  @Output() onQuack = new EventEmitter<any>();
-  constructor() { }
+
+  @Output()
+  custom: EventEmitter<any> = new EventEmitter();
+
+  @HostListener('click', ['$event'])
+  onClick(e) {
+    this.myEvent();
+  }
+
+  myEvent() {
+    this.custom.emit('omg this is awesome');
+    console.log('event called');
+  }
+
+  constructor() {
+    console.log('here');
+  }
 
   ngOnInit() {
   }

@@ -4604,6 +4604,11 @@ define('emberproj/tests/lint/app.lint-test', [], function () {
     assert.ok(true, 'app.js should pass ESLint\n\n');
   });
 
+  QUnit.test('controllers/application.js', function (assert) {
+    assert.expect(1);
+    assert.ok(false, 'controllers/application.js should pass ESLint\n\n3:16 - Use import Controller from \'@ember/controller\'; instead of using Ember.Controller (ember/new-module-imports)');
+  });
+
   QUnit.test('resolver.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'resolver.js should pass ESLint\n\n');
@@ -4621,7 +4626,7 @@ define('emberproj/tests/lint/templates.template.lint-test', [], function () {
 
   QUnit.test('emberproj/templates/application.hbs', function (assert) {
     assert.expect(1);
-    assert.ok(false, 'emberproj/templates/application.hbs should pass TemplateLint.\n\nemberproj/templates/application.hbs\n  5:4  error  HTML comment detected  no-html-comments\n  6:4  error  HTML comment detected  no-html-comments\n');
+    assert.ok(false, 'emberproj/templates/application.hbs should pass TemplateLint.\n\nemberproj/templates/application.hbs\n  1:15  error  Interaction added to non-interactive element  no-invalid-interactive\n  1:32  error  you must use double quotes in templates  quotes\n');
   });
 });
 define('emberproj/tests/lint/tests.lint-test', [], function () {

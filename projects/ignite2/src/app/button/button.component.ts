@@ -3,13 +3,14 @@ import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from 
 @Component({
   selector: 'ignite-button',
   template: `
-    <button (click)="onQuack.emit($event)" mat-raised-button color="primary"> {{ buttonLabel }} </button>
+    <button (click)="onQuack.emit($event)" [disabled]="disabled" mat-raised-button color="primary"> {{ buttonLabel }} </button>
   `,
   styles: [],
   encapsulation: ViewEncapsulation.None
 })
 export class IgniteButtonComponent implements OnInit {
   @Input() buttonLabel: string;
+  @Input() disabled: boolean;
   @Output() onQuack = new EventEmitter<any>();
   constructor() { }
 

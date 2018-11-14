@@ -1,10 +1,14 @@
 import {
   Component,
   Input,
+  Output,
   ContentChildren,
   QueryList,
   AfterContentInit,
-  ViewEncapsulation
+  ViewEncapsulation,
+  EventEmitter,
+  ViewChild,
+  ElementRef
 } from "@angular/core";
 import { IgniteOptionComponent } from "./option.component";
 
@@ -21,6 +25,9 @@ interface Option {
 })
 export class IgniteSelectComponent implements AfterContentInit {
   @Input() placeholder: string;
+  @Input() value: any;
+  @Output() selectionChange: EventEmitter<any>;
+  @ViewChild("#igniteMat") selectWrap: ElementRef;
 
   @ContentChildren(IgniteOptionComponent)
   childOptions: QueryList<IgniteOptionComponent>;
@@ -35,10 +42,36 @@ export class IgniteSelectComponent implements AfterContentInit {
     return this.optionsCache;
   }
 
-  constructor() {}
+  constructor() {
+    this.selectionChange = new EventEmitter();
+  }
+
+  ngAfterViewInit() {
+    console.group("ngAfterViewInit");
+    this.openMaybe();
+    console.groupEnd();
+  }
+
+  ngAfterViewChecked() {
+    console.group("ngAfterViewChecked");
+    this.openMaybe();
+    console.groupEnd();
+  }
+
+  connectedCallback() {
+    console.group("ngAfterViewChecked");
+    this.openMaybe();
+    console.groupEnd();
+  }
+
+  openMaybe() {
+    console.log("This", this);
+    console.log("That", this.selectWrap);
+    this.selectWrap && this.selectWrap.nativeElement.open();
+  }
 
   ngAfterContentInit() {
-    console.log("Child options: ", this.childOptions);
+    // console.log("Child options: ", this.childOptions);
     if (
       !this.optionsCache &&
       this.childOptions &&
@@ -51,7 +84,7 @@ export class IgniteSelectComponent implements AfterContentInit {
 
     this.childOptions.changes.subscribe(console.log);
 
-    console.log("Items cache has: ", this.optionsCache);
+    // console.log("Items cache has: ", this.optionsCache);
   }
 
   openedChange(opened: boolean) {

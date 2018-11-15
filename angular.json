@@ -127,7 +127,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "../UltiPro.NET-2/WebSites/UltiProNet/lib/components",
+            "outputPath": "dist/ignite2",
             "index": "projects/ignite2/src/index.html",
             "main": "projects/ignite2/src/main.ts",
             "polyfills": "projects/ignite2/src/polyfills.ts",

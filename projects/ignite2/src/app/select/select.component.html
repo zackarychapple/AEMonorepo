@@ -1,5 +1,5 @@
 <mat-form-field>
-  <mat-select #igniteMat [value]="value" (selectionChange)="selectionChange.emit($event)">
+  <mat-select #igniteMat [placeholder]="placeholder" [value]="value" (selectionChange)="selectionChange.emit($event)">
     <ng-content></ng-content>
   </mat-select>
 </mat-form-field>

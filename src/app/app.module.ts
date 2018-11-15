@@ -5,6 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {ButtonModule} from '@ignite/src/app/button/button.module';
 import {TableModule} from '@ignite/src/app/table/table.module';
+import {SelectModule} from '@ignite/src/app/select/select.module';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import {TableModule} from '@ignite/src/app/table/table.module';
   ],
   imports: [
     BrowserModule,
+    SelectModule,
     AppRoutingModule,
     ButtonModule,
     TableModule

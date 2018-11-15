@@ -1,32 +1,25 @@
-import {Component, EventEmitter, HostListener, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'ignite-button',
   template: `
-    <button mat-raised-button color="primary" (click)="myEvent()"> OMG</button>
+    <button mat-raised-button color="primary" [type]="buttonType" (click)="myEvent()"><ng-content></ng-content></button>
   `,
   styles: []
 })
-export class IgniteButtonComponent implements OnInit {
+export class IgniteButtonComponent {
+
+  @Input()
+  buttonType = 'Default';
 
   @Output()
   custom: EventEmitter<any> = new EventEmitter();
 
-  @HostListener('click', ['$event'])
-  onClick(e) {
-    this.myEvent();
-  }
-
   myEvent() {
     this.custom.emit('omg this is awesome');
-    console.log('event called');
   }
 
   constructor() {
-    console.log('here');
-  }
-
-  ngOnInit() {
   }
 
 }

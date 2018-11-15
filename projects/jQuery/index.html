@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>jQuery</title>
+  <meta charset="UTF-8">
+  <title>jQuery</title>
   <link rel="stylesheet" href="../../dist/ignite2/styles.css">
-  <link rel="stylesheet" href="./styles.css">
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
 </head>
 <body>
-<h1>jQuery!</h1>
 <ignite-card>
   <h2>Edit job</h2>
   <div class="field-container">
@@ -16,11 +18,21 @@
   </div>
   <ignite-button button-label="SAVE"></ignite-button>
 </ignite-card>
+
+<ignite-button button-type="imaType">Test</ignite-button>
+<br>
+<br>
+<br>
+<ignite-table></ignite-table>
 </body>
 <script type="text/javascript" src="../../dist/ignite2/scripts.js"></script>
 <script type="text/javascript" src="../../dist/ignite2/runtime.js"></script>
 <script type="text/javascript" src="../../dist/ignite2/polyfills.js"></script>
 <script type="text/javascript" src="../../dist/ignite2/main.js"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="./index.js"></script>
+
+<script>
+  $('ignite-button').on('custom', function ($event) {
+    debugger;
+  });
+</script>
 </html>

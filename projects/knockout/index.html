@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>jQuery</title>
+  <title>knockout</title>
   <link rel="stylesheet" href="../../dist/ignite2/styles.css">
   <script
     src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -11,12 +11,9 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
 </head>
 <body>
-<!--<ignite-button data-bind="click: testing"></ignite-button>-->
-<ignite-button data-bind="event{ custom: testing}"></ignite-button>
 <br>
 <br>
-<!--<ignite-button onclick="alert('test')"></ignite-button>-->
-<br>
+<ignite-button data-bind="event: { custom: testing}">Button 2</ignite-button>
 <br>
 <br>
 <ignite-table></ignite-table>
@@ -35,7 +32,6 @@
     this.lastName = "Bertington";
     this.testing = function (handler, $event) {
       debugger
-      alert('omg')
     }
   }
 

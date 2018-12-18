@@ -1,5 +1,29 @@
-<mat-form-field>
+<!-- <mat-form-field>
   <mat-select #igniteMat [placeholder]="placeholder" [value]="value" (selectionChange)="selectionChange.emit($event)">
     <ng-content></ng-content>
   </mat-select>
-</mat-form-field>
+</mat-form-field> -->
+<div cdk-overlay-origin
+     aria-hidden="true"
+     (click)="toggle()"
+     #origin="cdkOverlayOrigin"
+     #trigger>
+  <div class="select-trigger">
+    {{ displayText }}
+    <span class="fake-down-arrow">\/</span>
+  </div>
+
+</div>
+
+<ng-template
+  cdk-connected-overlay
+  cdkConnectedOverlayLockPosition
+  [cdkConnectedOverlayOrigin]="origin"
+  [cdkConnectedOverlayOpen]="panelOpen">
+  <div (click)="toggle()"
+       class="panel-wrapper">
+    <ul>
+      <ng-content></ng-content>
+    </ul>
+  </div>
+</ng-template>

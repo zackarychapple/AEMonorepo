@@ -1,17 +1,37 @@
-import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, Input, Output, ViewEncapsulation, ContentChildren, QueryList, AfterContentInit} from '@angular/core';
+import { IgniteOptionComponent } from './option.component';
 
 @Component({
   selector: 'ignite-select',
   templateUrl: './select.component.html',
-  styles: [],
-  encapsulation: ViewEncapsulation.None
+  styles: [
+    `:host { display: inline-block; }`,
+    `.panel-wrapper { background-color: white; border: 1px solid lightgrey; }`,
+    `.select-trigger { border: 1px lightgrey solid; }`,
+    `.fake-down-arrow { margin-left: 10px; background-color: darkgrey; color: white; padding: 0 7px; }`
+  ]
 })
-export class IgniteSelectComponent {
+export class IgniteSelectComponent implements AfterContentInit {
   @Input() placeholder: string;
   @Input() value: any;
   @Output() selectionChange: EventEmitter<any>;
+  @ContentChildren(IgniteOptionComponent) options: QueryList<IgniteOptionComponent>;
 
-  constructor() {
+  displayText = ' select value ';
 
+  constructor() {}
+
+  ngAfterContentInit() {
+    this.options.forEach(igniteOption => {
+      igniteOption.optionSelected.subscribe(o => {
+        this.displayText = `${o.value} (${o.displayedValue})`;
+      })
+    });
+  }
+
+  panelOpen = false;
+  toggle() {
+    this.panelOpen = !this.panelOpen;
+    console.log(`panel open: ${this.panelOpen}`)
   }
 }

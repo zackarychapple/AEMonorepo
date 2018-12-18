@@ -14,7 +14,6 @@ import { IgniteOptionComponent } from './option.component';
 export class IgniteSelectComponent implements AfterContentInit {
   @Input() placeholder: string;
   @Input() value: any;
-  @Output() selectionChange: EventEmitter<any>;
   @ContentChildren(IgniteOptionComponent) options: QueryList<IgniteOptionComponent>;
 
   displayText = ' select value ';
@@ -22,6 +21,7 @@ export class IgniteSelectComponent implements AfterContentInit {
   constructor() {}
 
   ngAfterContentInit() {
+    console.log(this.options);
     this.options.forEach(igniteOption => {
       igniteOption.optionSelected.subscribe(o => {
         this.displayText = `${o.value} (${o.displayedValue})`;

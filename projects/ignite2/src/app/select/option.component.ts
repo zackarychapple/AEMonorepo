@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'ignite-option',
@@ -11,14 +12,14 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class IgniteOptionComponent {
   @Input() value: string;
   @Input() displayedValue: string;
-  @Output() optionSelected = new EventEmitter();
+  optionSelected = new Subject<any>();
   constructor() {
     console.log('Option component is being constructed');
   }
 
   selectOption() {
     console.log(`select this option: ${this.value} - ${this.displayedValue}`);
-    this.optionSelected.emit({
+    this.optionSelected.next({
       value: this.value,
       displayedValue: this.displayedValue
     });

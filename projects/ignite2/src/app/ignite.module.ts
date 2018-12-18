@@ -20,7 +20,7 @@ import {IgniteSelectComponent} from '@ignite/src/app/select/select.component';
 import {IgniteOptionComponent} from '@ignite/src/app/select/option.component';
 import {IgniteTextBoxComponent} from '@ignite/src/app/text/text.component';
 import {IgniteDatePickerComponent} from '@ignite/src/app/date-picker/date-picker.component';
-import {Overlay, ScrollStrategy} from '@angular/cdk/overlay';
+import {Overlay, ScrollStrategy, OverlayModule} from '@angular/cdk/overlay';
 
 export function scrollFactory(overlay: Overlay): () => ScrollStrategy {
   return () => overlay.scrollStrategies.noop();
@@ -33,7 +33,8 @@ export function scrollFactory(overlay: Overlay): () => ScrollStrategy {
     MatSelectModule,
     MatOptionModule,
     MatNativeDateModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    OverlayModule,
   ],
   declarations: [],
   bootstrap: [],

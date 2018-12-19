@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, Output, ViewEncapsulation, ContentChildren, QueryList, AfterContentInit} from '@angular/core';
+import {Component, EventEmitter, Input, Output, ViewEncapsulation, ContentChildren, QueryList, AfterContentInit, ViewChildren, Injectable, OnInit} from '@angular/core';
 import { IgniteOptionComponent } from './option.component';
+import { SelectService } from './select.service';
 
 @Component({
   selector: 'ignite-select',
@@ -9,29 +10,53 @@ import { IgniteOptionComponent } from './option.component';
     `.panel-wrapper { background-color: white; border: 1px solid lightgrey; }`,
     `.select-trigger { border: 1px lightgrey solid; }`,
     `.fake-down-arrow { margin-left: 10px; background-color: darkgrey; color: white; padding: 0 7px; }`
-  ]
+  ],
+  encapsulation: ViewEncapsulation.ShadowDom
 })
-export class IgniteSelectComponent implements AfterContentInit {
+export class IgniteSelectComponent implements OnInit {
   @Input() placeholder: string;
   @Input() value: any;
+
   @ContentChildren(IgniteOptionComponent) options: QueryList<IgniteOptionComponent>;
 
   displayText = ' select value ';
 
-  constructor() {}
+  constructor(private selectService: SelectService) {}
 
-  ngAfterContentInit() {
-    console.log(this.options);
-    this.options.forEach(igniteOption => {
-      igniteOption.optionSelected.subscribe(o => {
-        this.displayText = `${o.value} (${o.displayedValue})`;
-      })
+  selectId: string;
+  ngOnInit() {
+    this.selectId = 'ignite-select-' + new Date();
+    this.selectService.selections.subscribe(item => {
+      console.log('new option... ', JSON.stringify(item));
+      this.displayText = `${item.option}`;
     });
   }
+
+  // ngAfterContentInit() {
+  //   console.log('ngAfterContentInit');
+  //   console.log(!!this.options);
+  //   console.log(!!this.options.changes);
+  //   this.options.changes.subscribe(opts => {
+  //     console.log('new options', opts);
+  //     if (!opts) {
+  //       return;
+  //     }
+  //     opts.forEach(igniteOption => {
+  //       igniteOption.optionSelected.subscribe(o => {
+  //         console.log('new option... ', o);
+  //         this.displayText = `${o.value} (${o.displayedValue})`;
+  //       })
+  //     });
+  //   });
+  //   // this.options.forEach(igniteOption => {
+  //   //   igniteOption.optionSelected.subscribe(o => {
+  //   //     this.displayText = `${o.value} (${o.displayedValue})`;
+  //   //   })
+  //   // });
+  // }
 
   panelOpen = false;
   toggle() {
     this.panelOpen = !this.panelOpen;
-    console.log(`panel open: ${this.panelOpen}`)
   }
 }

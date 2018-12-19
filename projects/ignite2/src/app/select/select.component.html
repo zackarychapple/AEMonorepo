@@ -12,7 +12,6 @@
     {{ displayText }}
     <span class="fake-down-arrow">\/</span>
   </div>
-
 </div>
 
 <ng-template
@@ -21,9 +20,14 @@
   [cdkConnectedOverlayOrigin]="origin"
   [cdkConnectedOverlayOpen]="panelOpen">
   <div (click)="toggle()"
-       class="panel-wrapper">
+       class="panel-wrapper {{selectId}}">
+    <h3>Options:</h3>
     <ul>
-      <ng-content></ng-content>
+      <!-- <ng-content></ng-content> -->
+      <!-- <li *ngFor="let peep of peepsObj">
+        {{peep.value}}
+      </li> -->
+      <slot></slot>
     </ul>
   </div>
 </ng-template>

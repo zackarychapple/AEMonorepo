@@ -1,4 +1,16 @@
-import { Component, Input, Output, EventEmitter, AfterViewInit, ElementRef, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  AfterViewInit,
+  ElementRef,
+  OnInit,
+  OnDestroy,
+  ViewEncapsulation,
+  Inject
+} from '@angular/core';
+import { IgniteSelectComponent } from '@ignite/src/app/select/select.component';
 import { Subject } from 'rxjs';
 import { SelectService } from './select.service';
 
@@ -15,7 +27,8 @@ export class IgniteOptionComponent implements OnInit, OnDestroy {
   @Input() value: string;
   @Input() display: string;
   optionSelected = new Subject<any>();
-  constructor(private elementRef: ElementRef, private selectService: SelectService) {
+  constructor(private elementRef: ElementRef, private selectService: SelectService, @Inject(IgniteSelectComponent) private _parentIgnite) {
+    _parentIgnite._addMe(this);
     // console.log('Option component is being constructed');
     // console.log(elementRef);
   }

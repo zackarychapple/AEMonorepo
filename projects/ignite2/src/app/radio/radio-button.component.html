@@ -1,0 +1,7 @@
+  <mat-radio-button
+    (change)="igniteChange.emit($event)"
+    *ngFor="let item of ignItems"
+    [value]="item"
+  >
+    {{item}}
+  </mat-radio-button>

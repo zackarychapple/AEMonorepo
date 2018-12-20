@@ -1,6 +1,6 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {Injector, NgModule} from '@angular/core';
-import {createCustomElement} from '@angular/elements';
+import { BrowserModule } from "@angular/platform-browser";
+import { Injector, NgModule } from "@angular/core";
+import { createCustomElement } from "@angular/elements";
 import {
   MAT_AUTOCOMPLETE_SCROLL_STRATEGY,
   MAT_SELECT_SCROLL_STRATEGY,
@@ -10,17 +10,18 @@ import {
   MatOptionModule,
   MatSelect,
   MatSelectModule
-} from '@angular/material';
-import {IgniteButtonComponent} from './button/button.component';
-import {IgniteTableComponent} from './table/table.component';
-import {IgniteCardComponent} from './form-card/card.component';
-import {IgniteFieldComponent} from './form-card/field.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {IgniteSelectComponent} from '@ignite/src/app/select/select.component';
-import {IgniteOptionComponent} from '@ignite/src/app/select/option.component';
-import {IgniteTextBoxComponent} from '@ignite/src/app/text/text.component';
-import {IgniteDatePickerComponent} from '@ignite/src/app/date-picker/date-picker.component';
-import {Overlay, ScrollStrategy} from '@angular/cdk/overlay';
+} from "@angular/material";
+import { IgniteButtonComponent } from "./button/button.component";
+import { IgniteTableComponent } from "./table/table.component";
+import { IgniteCardComponent } from "./form-card/card.component";
+import { IgniteFieldComponent } from "./form-card/field.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { IgniteSelectComponent } from "@ignite/src/app/select/select.component";
+import { IgnRadioButton } from "@ignite/src/app/radio/radio-button.component";
+import { IgniteOptionComponent } from "@ignite/src/app/select/option.component";
+import { IgniteTextBoxComponent } from "@ignite/src/app/text/text.component";
+import { IgniteDatePickerComponent } from "@ignite/src/app/date-picker/date-picker.component";
+import { Overlay, ScrollStrategy } from "@angular/cdk/overlay";
 
 export function scrollFactory(overlay: Overlay): () => ScrollStrategy {
   return () => overlay.scrollStrategies.noop();
@@ -45,6 +46,7 @@ export function scrollFactory(overlay: Overlay): () => ScrollStrategy {
     IgniteTableComponent,
     IgniteTextBoxComponent,
     IgniteSelectComponent,
+    IgnRadioButton,
     IgniteOptionComponent,
     IgniteDatePickerComponent,
     MatOption,
@@ -64,8 +66,7 @@ export function scrollFactory(overlay: Overlay): () => ScrollStrategy {
   ]
 })
 export class IgniteModule {
-  constructor(private injector: Injector) {
-  }
+  constructor(private injector: Injector) {}
 
   ngDoBootstrap() {
     const btnComp = createCustomElement(IgniteButtonComponent, {
@@ -86,6 +87,9 @@ export class IgniteModule {
     const selectComp = createCustomElement(IgniteSelectComponent, {
       injector: this.injector
     });
+    const radioComp = createCustomElement(IgnRadioButton, {
+      injector: this.injector
+    });
     const optionComp = createCustomElement(IgniteOptionComponent, {
       injector: this.injector
     });
@@ -96,14 +100,15 @@ export class IgniteModule {
       injector: this.injector
     });
 
-    customElements.define('ignite-button', btnComp as any);
-    customElements.define('ignite-table', tblComp as any);
-    customElements.define('ignite-card', cardComp as any);
-    customElements.define('ignite-field', formComp as any);
-    customElements.define('ignite-text-box', textComp as any);
-    customElements.define('ignite-select', selectComp as any);
-    customElements.define('ignite-option', optionComp as any);
-    customElements.define('ignite-date-picker', dateComp as any);
-    customElements.define('mat-option', matOptionComp as any);
+    customElements.define("ignite-button", btnComp as any);
+    customElements.define("ignite-table", tblComp as any);
+    customElements.define("ignite-card", cardComp as any);
+    customElements.define("ignite-field", formComp as any);
+    customElements.define("ignite-text-box", textComp as any);
+    customElements.define("ignite-select", selectComp as any);
+    customElements.define("ignite-radio", radioComp as any);
+    customElements.define("ignite-option", optionComp as any);
+    customElements.define("ignite-date-picker", dateComp as any);
+    customElements.define("mat-option", matOptionComp as any);
   }
 }
